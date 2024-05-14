@@ -1,0 +1,17 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Body of the truck -->
+  <rect x="50" y="100" width="250" height="100" fill="#6495ED" />
+  
+  <!-- Cab of the truck -->
+  <rect x="70" y="70" width="100" height="80" fill="#4682B4" />
+  
+  <!-- Windows of the truck -->
+  <rect x="80" y="80" width="40" height="30" fill="#87CEEB" />
+  <rect x="130" y="80" width="30" height="30" fill="#87CEEB" />
+  
+  <!-- Wheels of the truck -->
+  <circle cx="100" cy="200" r="20" fill="#000000" />
+  <circle cx="300" cy="200" r="20" fill="#000000" />
+
+</svg>
