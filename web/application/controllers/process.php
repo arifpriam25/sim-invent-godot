@@ -24,10 +24,10 @@ class Process extends CI_Controller
     public function request_car()
     {
         $note = '';
-        $car_type    = $this->input->post('car_type');
+        $car_model    = $this->input->post('car_model');
         $quantityInput = $this->input->post('quantity');
 
-        $parts = $this->M_RequiredParts->findByCarType($car_type);
+        $parts = $this->M_RequiredParts->findByCarType($car_model);
 
         // kali jumlah parts yang dibutuhkan dikali dengan quantity(mobil yang akan dibuat)
         foreach ($parts as $part) {
@@ -38,7 +38,7 @@ class Process extends CI_Controller
 
         //input ke database
         foreach ($parts as $part) {
-            $car_type = $part->car_type;
+            $car_model = $part->car_model;
             $parts_name = $part->parts_name;
             $quantity = $part->quantity;
             $a = substr($parts_name, 0, 3);
@@ -54,7 +54,7 @@ class Process extends CI_Controller
                 $data = array(
                     'username' => $this->session->userdata('username'),
                     'sku' => $sku,
-                    'car_type' => $car_type,
+                    'car_model' => $car_model,
                     'parts_name' => $parts_name,
                     'status' => 'SPR',
                     'spr_at' => date('Y-m-d H:i:s'),
@@ -62,7 +62,7 @@ class Process extends CI_Controller
                 $this->M_Inventory->insertData($data);
                 // print_r($data."<br>");
             }
-            $note = $note . "$i $parts_name untuk $car_type telah dimasukan ke SPR<br>";
+            $note = $note . "$i $parts_name untuk $car_model telah dimasukan ke SPR<br>";
         }
         // die();
         $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -111,15 +111,15 @@ class Process extends CI_Controller
 
     public function send_parts()
     {
-        $car_type    = $this->input->post('car_type');
+        $car_model    = $this->input->post('car_model');
         $quantityInput = $this->input->post('quantity');
 
-        $rq_parts = $this->M_RequiredParts->findByCarType($car_type);
+        $rq_parts = $this->M_RequiredParts->findByCarType($car_model);
         $id_parts = [];
         foreach ($rq_parts as $rq_item) {
             $parts_name = $rq_item->parts_name;
             $limit = $rq_item->quantity * $quantityInput;
-            $parts = $this->M_Inventory->forSendParts($car_type, $parts_name, $limit);
+            $parts = $this->M_Inventory->forSendParts($car_model, $parts_name, $limit);
 
             // print_r($parts);
             // die();
@@ -145,7 +145,7 @@ class Process extends CI_Controller
             $this->M_Inventory->updateById($data, $item);
         }
 
-        $note = $quantityInput . "set parts " . $car_type . " telah dikirim ke Manufaktur";
+        $note = $quantityInput . "set parts " . $car_model . " telah dikirim ke Manufaktur";
 
 
         $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">

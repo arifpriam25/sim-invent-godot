@@ -24,19 +24,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `car_type`
+-- Table structure for table `car_model`
 --
 
-CREATE TABLE `car_type` (
+CREATE TABLE `car_model` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `car_type`
+-- Dumping data for table `car_model`
 --
 
-INSERT INTO `car_type` (`id`, `name`) VALUES
+INSERT INTO `car_model` (`id`, `name`) VALUES
 (3, 'brio'),
 (4, 'jazz');
 
@@ -49,7 +49,7 @@ INSERT INTO `car_type` (`id`, `name`) VALUES
 CREATE TABLE `inventory` (
   `id` int(11) NOT NULL,
   `sku` varchar(255) NOT NULL,
-  `car_type` varchar(255) NOT NULL,
+  `car_model` varchar(255) NOT NULL,
   `parts_name` varchar(255) NOT NULL,
   `status` enum('SPR','SOH','SIT','US','IS') NOT NULL DEFAULT 'SPR',
   `spr_at` datetime DEFAULT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE `inventory` (
 -- Dumping data for table `inventory`
 --
 
-INSERT INTO `inventory` (`id`, `sku`, `car_type`, `parts_name`, `status`, `spr_at`, `soh_at`, `sit_at`, `us_at`, `is_at`, `quality_check`) VALUES
+INSERT INTO `inventory` (`id`, `sku`, `car_model`, `parts_name`, `status`, `spr_at`, `soh_at`, `sit_at`, `us_at`, `is_at`, `quality_check`) VALUES
 (840, 'ban17116047910', 'brio', 'bangku', 'SIT', '2024-03-28 06:46:31', '2024-03-28 06:48:04', NULL, NULL, NULL, NULL),
 (841, 'ban17116047911', 'brio', 'bangku', 'SIT', '2024-03-28 06:46:31', '2024-03-28 06:48:04', NULL, NULL, NULL, NULL),
 (842, 'ban17116047912', 'brio', 'bangku', 'SIT', '2024-03-28 06:46:31', '2024-03-28 06:48:04', NULL, NULL, NULL, NULL),
@@ -130,7 +130,7 @@ INSERT INTO `parts` (`id`, `name`) VALUES
 
 CREATE TABLE `required_parts` (
   `id` int(11) NOT NULL,
-  `car_type` varchar(255) DEFAULT NULL,
+  `car_model` varchar(255) DEFAULT NULL,
   `parts_name` varchar(255) DEFAULT NULL,
   `quantity` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -139,7 +139,7 @@ CREATE TABLE `required_parts` (
 -- Dumping data for table `required_parts`
 --
 
-INSERT INTO `required_parts` (`id`, `car_type`, `parts_name`, `quantity`) VALUES
+INSERT INTO `required_parts` (`id`, `car_model`, `parts_name`, `quantity`) VALUES
 (1, 'brio', 'bangku', 4),
 (6, 'brio', 'roda', 4),
 (7, 'brio', 'body', 1),
@@ -215,9 +215,9 @@ CREATE TABLE `user_token` (
 --
 
 --
--- Indexes for table `car_type`
+-- Indexes for table `car_model`
 --
-ALTER TABLE `car_type`
+ALTER TABLE `car_model`
   ADD PRIMARY KEY (`id`,`name`),
   ADD KEY `z1` (`name`);
 
@@ -227,7 +227,7 @@ ALTER TABLE `car_type`
 ALTER TABLE `inventory`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `sku` (`sku`),
-  ADD KEY `fk_car_type` (`car_type`),
+  ADD KEY `fk_car_model` (`car_model`),
   ADD KEY `fk_parts` (`parts_name`);
 
 --
@@ -244,7 +244,7 @@ ALTER TABLE `parts`
 --
 ALTER TABLE `required_parts`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `car_type` (`car_type`,`parts_name`),
+  ADD UNIQUE KEY `car_model` (`car_model`,`parts_name`),
   ADD KEY `parts` (`parts_name`);
 
 --
@@ -270,9 +270,9 @@ ALTER TABLE `user_token`
 --
 
 --
--- AUTO_INCREMENT for table `car_type`
+-- AUTO_INCREMENT for table `car_model`
 --
-ALTER TABLE `car_type`
+ALTER TABLE `car_model`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
@@ -319,14 +319,14 @@ ALTER TABLE `user_token`
 -- Constraints for table `inventory`
 --
 ALTER TABLE `inventory`
-  ADD CONSTRAINT `fk_car_type` FOREIGN KEY (`car_type`) REFERENCES `car_type` (`name`),
+  ADD CONSTRAINT `fk_car_model` FOREIGN KEY (`car_model`) REFERENCES `car_model` (`name`),
   ADD CONSTRAINT `fk_parts` FOREIGN KEY (`parts_name`) REFERENCES `parts` (`name`);
 
 --
 -- Constraints for table `required_parts`
 --
 ALTER TABLE `required_parts`
-  ADD CONSTRAINT `required_parts_ibfk_1` FOREIGN KEY (`car_type`) REFERENCES `car_type` (`name`),
+  ADD CONSTRAINT `required_parts_ibfk_1` FOREIGN KEY (`car_model`) REFERENCES `car_model` (`name`),
   ADD CONSTRAINT `required_parts_ibfk_2` FOREIGN KEY (`parts_name`) REFERENCES `parts` (`name`);
 COMMIT;
 

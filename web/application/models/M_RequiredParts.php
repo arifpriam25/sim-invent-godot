@@ -9,7 +9,7 @@ class M_RequiredParts extends CI_model{
 	}
 
 	public function findByCarType($data) {
-		$this->db->where('car_type', $data);
+		$this->db->where('car_model', $data);
         $this->db->from('required_parts');
         return $this->db->get()->result();
 	}

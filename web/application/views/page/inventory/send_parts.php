@@ -15,14 +15,14 @@
 			<div class="form-group">
 				<label>Tipe Mobil</label>
 
-				<select name="car_type" class="form-control">
+				<select name="car_model" class="form-control">
 					<option value="">--Pilih Tipe Mobil--</option>
 					<?php $no = 1;
 					foreach ($list_car as $data) : ?>
 						<option value="<?php echo $data->name ?>"><?php echo $data->name ?></option>
 					<?php endforeach; ?>
 				</select>
-				<?php echo form_error('car_type', '<div class="text-small text-danger"> </div>') ?>
+				<?php echo form_error('car_model', '<div class="text-small text-danger"> </div>') ?>
 			</div>
 			<div class="form-group">
 				<label>Quantity</label>

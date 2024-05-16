@@ -4,13 +4,13 @@ class M_CarType extends CI_model{
 
 	public function get_data() {
         $this->db->select('*');
-        $this->db->from('car_type');
+		$this->db->from('car_model');
         return $this->db->get()->result();
 	}
 
 	public function findById($data) {
 		$this->db->where('id', $data);
-        $this->db->from('car_type');
+		$this->db->from('car_model');
         return $this->db->get()->result();
 	}
 

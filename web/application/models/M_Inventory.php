@@ -40,11 +40,11 @@ class M_Inventory extends CI_model
 		$this->db->update('inventory', $data);
 	}
 
-	public function forSendParts($car_type, $parts_name, $limit)
+	public function forSendParts($car_model, $parts_name, $limit)
 	{
 		$this->db->from('inventory');
 		$this->db->order_by('soh_at', 'asc');
-		$this->db->where('car_type', $car_type);
+		$this->db->where('car_model', $car_model);
 		$this->db->where('parts_name', $parts_name);
 		$this->db->where('status', 'SOH');
 		$this->db->limit($limit);
