@@ -22,14 +22,19 @@
             </tr>
           </thead>
           <tbody>
-            <?php $no = 1;
-            foreach ($list as $data) : ?>
+            <?php
+            $no = 1;
+            foreach ($list as $data) :
+              $epoch = $data->updated_at;
+              $dt = new DateTime("@$epoch");
+              $date = $dt->format('d F Y H:i:s');
+            ?>
               <tr>
                 <td class="text-center"><?php echo $no++ ?></td>
                 <td class="text-center"><?php echo $data->sku ?></td>
                 <td class="text-center"><?php echo $data->car_model ?></td>
                 <td class="text-center"><?php echo $data->parts_name ?></td>
-                <td class="text-center"><?php echo $data->spr_at ?></td>
+                <td class="text-center"><?php echo $date ?></td>
 
               </tr>
             <?php endforeach; ?>

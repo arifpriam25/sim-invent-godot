@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Login | Aplikasi Inventaris</title>
+	<title>Login | Inventaris Sparepart</title>
 	<link href="<?php echo base_url(); ?>assets/css/login.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
 	<script src="<?php echo base_url(); ?>assets/js/a81368914c.js"></script>
@@ -17,7 +17,7 @@
 		<div class="login-content">
 			<form class="user" method="POST" action="<?php echo base_url('login') ?>">
 				<img src="<?php echo base_url(); ?>assets/img/avatar.svg">
-				<h2 class="title">Aplikasi Inventaris </h2>
+				<h2 class="title">Inventaris Sparepart</h2>
 				<?php echo $this->session->flashdata('pesan') ?>
 				<div class="input-div one">
 					<div class="i">
@@ -39,7 +39,7 @@
 				</div>
 				<input type="submit" class="btn" value="Login">
 			</form>
-			
+
 		</div>
 	</div>
 	<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/main.js"></script>

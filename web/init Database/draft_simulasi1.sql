@@ -53,7 +53,7 @@ CREATE TABLE `inventory` (
   `parts_name` varchar(255) NOT NULL,
   `status` enum('SPR','SOH','SIT','US','IS') NOT NULL DEFAULT 'SPR',
   `spr_at` datetime DEFAULT NULL,
-  `soh_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
   `sit_at` datetime DEFAULT NULL,
   `us_at` datetime DEFAULT NULL,
   `is_at` datetime DEFAULT NULL,
@@ -64,7 +64,7 @@ CREATE TABLE `inventory` (
 -- Dumping data for table `inventory`
 --
 
-INSERT INTO `inventory` (`id`, `sku`, `car_model`, `parts_name`, `status`, `spr_at`, `soh_at`, `sit_at`, `us_at`, `is_at`, `quality_check`) VALUES
+INSERT INTO `inventory` (`id`, `sku`, `car_model`, `parts_name`, `status`, `spr_at`, `updated_at`, `sit_at`, `us_at`, `is_at`, `quality_check`) VALUES
 (840, 'ban17116047910', 'brio', 'bangku', 'SIT', '2024-03-28 06:46:31', '2024-03-28 06:48:04', NULL, NULL, NULL, NULL),
 (841, 'ban17116047911', 'brio', 'bangku', 'SIT', '2024-03-28 06:46:31', '2024-03-28 06:48:04', NULL, NULL, NULL, NULL),
 (842, 'ban17116047912', 'brio', 'bangku', 'SIT', '2024-03-28 06:46:31', '2024-03-28 06:48:04', NULL, NULL, NULL, NULL),

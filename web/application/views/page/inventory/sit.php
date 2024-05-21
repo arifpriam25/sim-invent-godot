@@ -17,7 +17,6 @@
               <th class="text-center">Tipe Mobil</th>
               <th class="text-center">Nama Parts</th>
               <th class="text-center">Tanggal</th>
-
             </tr>
           </thead>
           <tbody>
@@ -28,7 +27,7 @@
                 <td class="text-center"><?php echo $data->sku ?></td>
                 <td class="text-center"><?php echo $data->car_model ?></td>
                 <td class="text-center"><?php echo $data->parts_name ?></td>
-                <td class="text-center"><?php echo $data->spr_at ?></td>
+                <td class="text-center"><?php echo $data->updated_at ?></td>
 
               </tr>
             <?php endforeach; ?>

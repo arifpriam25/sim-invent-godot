@@ -57,7 +57,7 @@ class Process extends CI_Controller
                     'car_model' => $car_model,
                     'parts_name' => $parts_name,
                     'status' => 'SPR',
-                    'spr_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => time(),
                 );
                 $this->M_Inventory->insertData($data);
                 // print_r($data."<br>");
@@ -94,7 +94,7 @@ class Process extends CI_Controller
         foreach ($list as $item) {
             $data = array(
                 'status' => 'SOH',
-                'soh_at' => date('Y-m-d H:i:s'),
+                'updated_at' => time(),
             );
 
             $this->M_Inventory->updateById($data, $item->id);
@@ -139,7 +139,7 @@ class Process extends CI_Controller
         foreach ($id_parts as $item) {
             $data = array(
                 'status' => 'SIT',
-                'soh_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             );
 
             $this->M_Inventory->updateById($data, $item);
