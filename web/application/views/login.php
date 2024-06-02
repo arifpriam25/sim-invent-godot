@@ -11,9 +11,9 @@
 
 <body>
 	<div class="container">
-		<div class="img">
+		<!-- <div class="img">
 			<img src="<?php echo base_url(); ?>assets/img/payroll.svg">
-		</div>
+		</div> -->
 		<div class="login-content">
 			<form class="user" method="POST" action="<?php echo base_url('login') ?>">
 				<img src="<?php echo base_url(); ?>assets/img/avatar.svg">

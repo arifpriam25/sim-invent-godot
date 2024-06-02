@@ -18,13 +18,22 @@ body{
 }
 
 .container{
-    width: 100vw;
-    height: 100vh;
+    /* width: 100vw;
+    
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap :7rem;
     padding: 0 2rem;
+	 */
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	height: 100vh;
+    width: 100%;
+    /* max-width: 1200px; */
+    padding: 2rem;
 }
+
 
 .img{
 	display: flex;
@@ -34,7 +43,8 @@ body{
 
 .login-content{
 	display: flex;
-	justify-content: flex-start;
+	/* justify-content: flex-start; */
+	justify-content: center;
 	align-items: center;
 	text-align: center;
 }
